@@ -1,0 +1,22 @@
+{
+  "realm": "vehicle-sales",
+  "enabled": true,
+  "sslRequired": "none",
+  "registrationAllowed": true,
+  "registrationEmailAsUsername": false,
+  "accessTokenLifespan": 3600,
+  "clients": [
+    {
+      "clientId": "vehicle-sales-api",
+      "name": "Vehicle Sales API",
+      "enabled": true,
+      "publicClient": true,
+      "protocol": "openid-connect",
+      "standardFlowEnabled": true,
+      "directAccessGrantsEnabled": true,
+      "serviceAccountsEnabled": false,
+      "redirectUris": ["*"],
+      "webOrigins": ["*"]
+    }
+  ]
+}
