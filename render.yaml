@@ -1,0 +1,28 @@
+services:
+  - type: web
+    name: vehicle-sales-api
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    plan: free
+    dockerCommand: sh -c "npx prisma migrate deploy && node dist/main.js"
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 3000
+      - key: DATABASE_URL
+        fromDatabase:
+          name: vehicle-sales-db
+          property: connectionString
+      - key: KEYCLOAK_ISSUER_URL
+        sync: false
+      - key: KEYCLOAK_JWKS_URI
+        sync: false
+      - key: KEYCLOAK_AUDIENCE
+        sync: false
+
+databases:
+  - name: vehicle-sales-db
+    plan: free
+    databaseName: vehicle_sales
+    user: vehicle_sales
